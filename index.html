@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск препаратов</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="top">
+            <div>
+                <h1 class="trans" data-key="title">Поиск информации о препаратах</h1>
+                <p class="subtitle trans" data-key="subtitle">Быстрый поиск по проверённым медицинским источникам</p>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ru">РУ</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="hy">ՀԱ</button>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <button class="tab-btn active" data-target="tab-search" data-key="search">Поиск</button>
+            <button class="tab-btn" data-target="tab-buy" data-key="buy">Где купить</button>
+            <button class="tab-btn" data-target="tab-doses" data-key="doses">Дозировки</button>
+            <button class="tab-btn" data-target="tab-map" data-key="map">Карта аптек</button>
+            <button class="tab-btn" data-target="tab-marketplaces" data-key="marketplaces">Маркетплейсы</button>
+        </nav>
+
+        <section id="tab-search" class="tab-pane active">
+            <div class="search-row">
+                <input type="text" id="searchInput" class="form-input" placeholder="Например: парацетамол" autofocus data-key="search_placeholder">
+                <button id="searchButton" class="btn-primary" data-key="search_btn">Поиск</button>
+            </div>
+            <div id="resultsMeta" class="results-meta" aria-live="polite"></div>
+            <div id="results" class="results"></div>
+        </section>
+
+        <section id="tab-buy" class="tab-pane">
+            <div class="country-row">
+                <label for="countrySelect" data-key="country_label">Страна</label>
+                <select id="countrySelect"></select>
+                <input id="buyQuery" class="form-input" placeholder="Название препарата" data-key="drug_placeholder" />
+                <input id="cityInput" class="form-input" placeholder="Город (опционально)" data-key="city_placeholder" />
+                <button id="buyButton" class="btn-primary" data-key="buy_btn">Где купить</button>
+            </div>
+            <div id="pharmacies" class="pharmacies"></div>
+        </section>
+
+        <section id="tab-marketplaces" class="tab-pane">
+            <div class="result">
+                <h2 data-key="market_title">Маркетплейсы</h2>
+                <p data-key="market_desc">Выберите маркетплейс или введите свой — поиск откроется в новом окне.</p>
+                <div class="doses-controls">
+                    <input id="marketQuery" class="form-input" placeholder="Что искать (например: пинцеты)" data-key="market_search_placeholder" />
+                    <select id="marketVendorSelect" class="form-input">
+                        <option value="" data-key="market_select_placeholder">Выберите маркетплейс</option>
+                        <option value="wildberries">Wildberries</option>
+                        <option value="ozon">Ozon</option>
+                        <option value="aliexpress">AliExpress</option>
+                        <option value="yandex">Yandex.Market</option>
+                    </select>
+                    <input id="marketCustom" class="form-input" placeholder="Или введите адрес/название магазина (опционально)" data-key="market_custom_placeholder" />
+                    <button id="marketSearchBtn" class="btn-primary" data-key="market_search_btn">Искать в маркетплейсе</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-doses" class="tab-pane">
+            <div class="result">
+                <h2 data-key="doses_title">Таблица дозировок</h2>
+                <p data-key="doses_desc">Выберите препарат и возрастную группу, чтобы посмотреть примерные дозировки.</p>
+                <div class="doses-controls">
+                    <input id="doseQuery" class="form-input" placeholder="Например: парацетамол" data-key="drug_placeholder" />
+                    <input id="ageInput" class="form-input" placeholder="Ваш возраст (лет)" data-key="age_placeholder" />
+                    <button id="doseButton" class="btn-primary" data-key="show_btn">Показать</button>
+                </div>
+                <div id="doseResult" style="margin-top:12px;"></div>
+            </div>
+        </section>
+
+        <section id="tab-map" class="tab-pane">
+            <div class="result">
+                <h2 data-key="map_title">Карта аптек</h2>
+                <p data-key="map_desc">Найдите аптеки рядом или по названию города.</p>
+                <div class="map-controls">
+                    <input id="mapCity" class="form-input" placeholder="Город или адрес (опционально)" data-key="city_placeholder" />
+                    <button id="mapFindBtn" class="btn-primary outline" data-key="map_nearby_btn">Найти поблизости</button>
+                    <button id="mapLocateBtn" class="btn-primary" data-key="map_locate_btn">Найти по местоположению</button>
+                </div>
+                <div id="map" style="height:420px; margin-top:12px; border-radius:8px; overflow:hidden;"></div>
+                <div id="mapList" class="pharmacies" style="margin-top:12px;"></div>
+            </div>
+        </section>
+
+        <!-- favorites removed as requested -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
