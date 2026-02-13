@@ -114,8 +114,55 @@ h1 { margin:0; font-size:22px; font-weight:600; color:#2d3326; }
 .pharm-title { font-weight:700; color:#2b2b22; margin-bottom:8px; }
 .pharm-snippet { font-size:13px; color:#4a4a3f; min-height:48px; margin-bottom:8px; }
 .pharmacy-actions { display:flex; gap:8px; margin-top:8px; }
-/* responsive */
-@media (max-width:600px) { .container{ margin:18px; padding:18px;} .search-row{flex-direction:column;align-items:stretch;} .btn-primary{width:100%;} }
+/* responsive breakpoints: phones, tablets, desktops */
+/* very small phones */
+@media (max-width:420px) {
+    .container { margin:12px; padding:14px; border-radius:10px; }
+    h1 { font-size:18px; }
+    .subtitle { font-size:12px; }
+    .top { flex-direction:column; align-items:flex-start; gap:10px; }
+    .lang-switcher { align-self:flex-end; }
+    .search-row { flex-direction:column; align-items:stretch; gap:8px; }
+    #searchInput { font-size:14px; padding:10px; }
+    .btn-primary { width:100%; padding:10px; }
+    .main-nav { flex-wrap:wrap; gap:6px; }
+    .result { padding:14px; }
+    .result h2 { font-size:16px; }
+    .additional-sources { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+    .pharmacies { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    #map { height:280px; }
+    .country-row { flex-direction:column; align-items:stretch; }
+    .country-row label { margin-right:0; margin-bottom:6px; }
+}
+
+/* phones / small portrait tablets */
+@media (min-width:421px) and (max-width:767px) {
+    .container { margin:16px; padding:16px; max-width:720px; }
+    h1 { font-size:20px; }
+    .search-row { flex-direction:column; align-items:stretch; gap:10px; }
+    .btn-primary { width:100%; }
+    .main-nav { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .additional-sources { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .pharmacies { grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); }
+    #map { height:340px; }
+}
+
+/* tablets and small laptops */
+@media (min-width:768px) and (max-width:1024px) {
+    .container { margin:20px auto; padding:22px; max-width:900px; }
+    h1 { font-size:22px; }
+    .top { align-items:center; }
+    .search-row { flex-wrap:wrap; gap:10px; }
+    .btn-primary { padding:10px 16px; }
+    .additional-sources { grid-template-columns: repeat(2, 1fr); }
+    .pharmacies { grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); }
+    #map { height:380px; }
+}
+
+/* large screens */
+@media (min-width:1025px) {
+    .container { max-width:1100px; }
+}
 
 /* fade */
 .fade-in { animation: fadeIn 360ms ease both; }
