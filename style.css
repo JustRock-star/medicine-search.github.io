@@ -184,3 +184,23 @@ h1 { margin:0; font-size:22px; font-weight:600; color:#2d3326; }
 .result a:hover {
     text-decoration: underline;
 }
+
+/* Fixes: prevent page horizontal scrolling and ensure rows wrap on small screens */
+html, body { overflow-x: hidden; }
+
+/* main navigation: allow wrapping and horizontal scroll on very narrow viewports */
+.main-nav { display:flex; gap:8px; flex-wrap:wrap; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.tab-btn { white-space:nowrap; }
+
+/* Make control rows wrap and inputs shrink properly */
+.search-row, .doses-controls, .map-controls, .country-row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.search-row > *, .doses-controls > *, .map-controls > *, .country-row > * { min-width:0; }
+#searchInput, .form-input { flex:1; min-width:0; }
+
+/* Map responsiveness */
+#map { width:100%; max-width:100%; box-sizing:border-box; min-height:220px; height:auto; }
+
+/* Reduce heavy shadows on small screens to avoid overflow artifacts */
+@media (max-width:600px) {
+    .container { box-shadow: 0 6px 20px rgba(20,20,20,0.06); }
+}
